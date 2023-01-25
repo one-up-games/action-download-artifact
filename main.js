@@ -132,7 +132,7 @@ async function main() {
                         }
                         if (searchArtifacts) {
                             const artifact = artifacts.data.artifacts.find((artifact) => {
-                                return artifact.name == name
+                                return artifact.name.indexOf(name) >= 0
                             })
                             if (!artifact) {
                                 continue
@@ -171,7 +171,7 @@ async function main() {
         // One artifact or all if `name` input is not specified.
         if (name) {
             filtered = artifacts.filter((artifact) => {
-                return artifact.name == name
+                return artifact.name.indexOf(name) >= 0
             })
             if (filtered.length == 0) {
                 core.info(`==> (not found) Artifact: ${name}`)
